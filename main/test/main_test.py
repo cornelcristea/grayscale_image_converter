@@ -1,35 +1,57 @@
+
 import unittest
-from os import mkdir
-from os.path import exists, join
-from shutil import copy2
+from os import mkdir 
+from shutil import rmtree
+from os.path import exists, abspath, dirname
+from sys import path, argv
 
-
-class MainTest(unittest.TestCase):
-
+class UnitTestMain(unittest.TestCase):
     @staticmethod
     def setup():
-        test_dir = "..//..//target//test"
-        src_dir = "..//src"
-        if not exists(test_dir):
-            try:
-                mkdir(test_dir)
-            except:
-                print("ERROR: The ""target"" folder cannot be created.")
+        # prepare test enviroment
+        current_dir = dirname(abspath(argv[0]))
+        pwd_list = current_dir.split("\\")
+        repo_dir = "\\".join(pwd_list[:-2])
+        target_dir = repo_dir + "\\target"
+        test_dir = target_dir + "\\test"
+        src_dir =  repo_dir + "\\main\\src" 
 
-            copy2(join(src_dir, "//main.py"), join(test_dir, "//main.py"))
+        # import source file as globally
+        path.append(src_dir)
+        import main
+        globals()['main'] = main
 
+        # make target/test folder in repository
+        if not exists(target_dir):
+            mkdir(target_dir)
+            mkdir(test_dir)
+        elif not exists(test_dir):
+            mkdir(test_dir)
+            
+        return repo_dir
 
-    def convert_image_test(self):
-        MainTest.setup()
-        # variables
-        input_image = ".//img_input.jpg"
-        output_dir = "./"
-        new_name = "img_out"
-        img_ref = ".//img_reference.jpg"
+    def test_convert_image(self):
+        # path variables
+        repo_dir = UnitTestMain.setup()
+        input_image = repo_dir + "\\main\\test\\image.jpg"
+        output_dir = repo_dir + "\\target\\test"
+        new_name = "image_grayscale"
+        expected_image = output_dir + "\\" + new_name + ".jpg"
 
         # call main function
-        from main import convert_image
-        img_out = convert_image(input_image, output_dir, new_name)
+        output_image = main.convert_image(input_image, output_dir, new_name)
 
+        # check existance of grayscale image
+        if output_image == expected_image and exists(expected_image):
+            test_result = True
+        else:
+            test_result = False
+            
         # check result
-        self.assertEqual(img_out, img_ref)
+        self.assertTrue(test_result)
+
+        py_cache = repo_dir + "\\main\\src\\__pycache__"
+        rmtree(py_cache)
+
+if __name__ == "__main__":
+    unittest.main()
