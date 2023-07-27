@@ -22,6 +22,8 @@ def convert_image(input_image, output_dir, new_name):
         print("The image was converted with success.")
     except:
         print("ERROR: The image cannot be converted.")
+    
+    return output_image
 
 # display info 
 print("===============================\n")
@@ -33,13 +35,13 @@ print("\nThis software will convert a .jpg image to grayscale. Please add the fo
     "\nexample: python img_converter.py -i <image_path> -o <output_folder> -n <new_name>\n")
 print("===============================")
 
-# check input parameters
 try:
+    # check input parameters
     img_path = argv[1]
     out_dir = argv[3]
     new_name = argv[5]
+    # call main function
+    gray_img = convert_image(img_path, out_dir, new_name)   
 except IndexError:
     print("ERROR: Missing input parameter.")
 
-# call main function
-convert_image(img_path, out_dir, new_name)
