@@ -1,9 +1,9 @@
 #!/bin/sh
 
 ###########################
-# HOW TO USE
+# LOCAL BUILD
 ###########################
-# in root of repostitory call the following coomand in terminal
+# open a terminal in root of this repository and call the following command
 #   source build.sh -m <mode>
 #
 # note: 
