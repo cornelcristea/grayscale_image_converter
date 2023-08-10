@@ -46,12 +46,13 @@ class UnitTestMain(unittest.TestCase):
             test_result = True
         else:
             test_result = False
-            
+        
         # check result
         self.assertTrue(test_result)
 
-        py_cache = repo_dir + "\\main\\src\\__pycache__"
-        rmtree(py_cache)
+        # delete cache files
+        pycache_dir = repo_dir + "\\main\\src\\__pycache__"
+        rmtree(pycache_dir)
 
 if __name__ == "__main__":
     unittest.main()
