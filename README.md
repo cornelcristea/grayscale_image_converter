@@ -6,7 +6,7 @@
 - -o <output_folder> - folder where you want to save the new image<br>
 - -n <new_name> - name of your new image
 
-<br><br>
+
 2. The life cycle of this software will be integrate in a CI/CD environment. For each commit in the "main" branch an agent must be triggered and it will do the following steps:
 
 - install python requiments
