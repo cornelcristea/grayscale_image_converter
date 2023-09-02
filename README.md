@@ -1,6 +1,6 @@
 # grayscale_image_converter
 
-## Requiments:
+## Requirements:
 1. Develop a python software that will convert a .jpg image to grayscale. As input, the software will have the following arguments:
 - -i <image_path> - full path of your image<br>
 - -o <output_folder> - folder where you want to save the new image<br>
