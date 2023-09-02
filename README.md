@@ -15,7 +15,6 @@ Remark: For each commit in the "main" branch an agent must be triggered and it w
 - test the source file
 - build .exe file if test is passed
 - deploy the .exe file as artifacts
-<br>
 
 ## Implementation:
 1. Software development: DONE
