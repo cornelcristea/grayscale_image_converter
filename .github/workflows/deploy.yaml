@@ -1,33 +1,21 @@
-'''
-
-# Publish GitHub workflow artifacts tutorial example
-name: Publish GitHub Actions Artifacts Example
-
-on:
-  push:
-    branches: [ main ]
-
+name: Build Software
+run-name: ${{ github.actor }} is testing out GitHub Actions
+on: [push]
 jobs:
-       
-  archive-build-artifacts:
+  Build Software:
     runs-on: ubuntu-latest
     steps:
-
-      - name: Step 1 - Create a temporary artifact downloads folder
-        run: mkdir downloads
-        
-      - name: step 2 - Add artifacts to publish to the temp folder
+      - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - name: Building .exe file
+      - run: |
+          python -m ensurepip --upgrade
+          bash ../../../build.sh
+      - name: Deploy the artifacts
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
+      - name: List files in the repository
         run: |
-          cd downloads
-          echo 'alpha'    > alpha.html
-          echo 'bravo'    > bravo.html
-          echo 'charlie'  > charlie.html
-          cd ..
-    
-      - name: Step 3 - Use the Upload Artifact GitHub Action
-        uses: actions/upload-artifact@v2
-        with: 
-          name: assets-for-download
-          path: downloads
-
-'''
+          ls ${{ github.workspace }}
+      - run: echo "This job's status is ${{ job.status }}."
