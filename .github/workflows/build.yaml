@@ -14,10 +14,10 @@ jobs:
       - run: pip install -r ./main/src/requiments.txt
       - run: |
           if [ ! -d ./target ]; then mkdir ./target; fi
-          python main_test.py
+          python ./main/test/main_test.py
       - run: |
           cp -r ./main/src/main.py ./target/grayscale_image_converter.py
-          cd /target/
+          cd target
           pyinstaller grayscale_image_converter.py -y
       - name: List files in the repository
         run: |
