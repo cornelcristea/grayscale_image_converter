@@ -18,8 +18,8 @@ class UnitTestMain(unittest.TestCase):
 
         # import source file as globally
         path.append(src_dir)
-        import main
-        globals()['main'] = main
+        from main import convert_image
+        globals()['main'] = convert_image
 
         # make target/test folder in repository
         if not exists(target_dir):
@@ -28,18 +28,18 @@ class UnitTestMain(unittest.TestCase):
         elif not exists(test_dir):
             mkdir(test_dir)
             
-        return repo_dir
+        return repo_dir, convert_image
 
     def test_convert_image(self):
         # path variables
-        repo_dir = UnitTestMain.setup()
+        repo_dir, convert_image = UnitTestMain.setup()
         input_image = repo_dir + "\\main\\test\\image.jpg"
         output_dir = repo_dir + "\\target\\test"
         new_name = "image_grayscale"
         expected_image = output_dir + "\\" + new_name + ".jpg"
 
         # call main function
-        output_image = main.convert_image(input_image, output_dir, new_name)
+        output_image = convert_image(input_image, output_dir, new_name)
 
         # check existance of grayscale image
         if output_image == expected_image and exists(expected_image):
