@@ -11,17 +11,13 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - run: echo "The workflow is now ready to test your code on the runner."
-      - run: |
-          pwd
-          pip install -r requiments.txt
-          echo "STATUS: Test source file..."
-          if [ ! -d ${TARGET_DIR} ]; then mkdir ${TARGET_DIR}; fi
-          python main_test.py
-          echo "STATUS: Build executable file..."
-          cp -r ./main/src/main.py ./target/grayscale_image_converter.py
-          cd /target/
-          pyinstaller grayscale_image_converter.py -y
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
+      - run: pwd
+      - run: pip install -r requiments.txt
+      - run: echo "Test source file..."
+      - run: if [ ! -d ${TARGET_DIR} ]; then mkdir ${TARGET_DIR}; fi
+      - run: python main_test.py
+      - run: echo "Build executable file..."
+      - run: cp -r ./main/src/main.py ./target/grayscale_image_converter.py
+      - run: cd /target/
+      - run: pyinstaller grayscale_image_converter.py -y
       - run: echo "This job's status is ${{ job.status }}."
