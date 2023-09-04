@@ -5,15 +5,15 @@
 - -i <image_path> - full path of your image<br>
 - -o <output_folder> - folder where you want to save the new image<br>
 - -n <new_name> - name of your new image
-
-
+<br><br>
 2. The life cycle of this software will be integrate in a CI/CD environment. For each commit in the "main" branch an agent must be triggered and it will do the following steps:
-
-- install python requiments
-- test the source file
-- build .exe file if test is passed
-- deploy the .exe file as artifacts
+- install python requiments <br>
+- test the source file<br>
+- build .exe file if test is passed<br>
+- deploy the .exe file as artifacts<br>
 <br>
+3. The environment for this project should be opened in a docker container<br>
+Remark: create a docker image that will contain all necessary resources
 
 ## Implementation:
 1. Software development: DONE
