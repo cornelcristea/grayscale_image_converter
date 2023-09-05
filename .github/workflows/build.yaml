@@ -20,7 +20,10 @@ jobs:
           cp -r ./main/src/main.py ./target/grayscale_image_converter.py
           cd target
           pyinstaller grayscale_image_converter.py -y
+      - name: Deploy artifacts
+        run: |
+          echo "Deploy artifacts: to be done"
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: echo "This job's status is ${{ job.status }}."
+      - run: echo "Job status is ${{ job.status }}."
