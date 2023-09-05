@@ -1,9 +1,10 @@
 
 import unittest
-from os import mkdir, remove
-from shutil import copyfile, rmtree
+from os import mkdir 
+from shutil import rmtree
 from os.path import exists, abspath, dirname
 from sys import path, argv
+from ..src import main
 
 class UnitTestMain(unittest.TestCase):
     @staticmethod
@@ -22,11 +23,7 @@ class UnitTestMain(unittest.TestCase):
             mkdir(test_dir)
         elif not exists(test_dir):
             mkdir(test_dir)
-        
-        print(" repo dir : " + repo_dir)
-        print(" src dir : " + src_dir)
-        copyfile(src_dir + "\\main.py", repo_dir + "\\main\\test\\main.py")
-
+            
         return repo_dir
 
     def test_convert_image(self):
@@ -38,7 +35,6 @@ class UnitTestMain(unittest.TestCase):
         expected_image = output_dir + "\\" + new_name + ".jpg"
 
         # call main function
-        import main
         output_image = main.convert_image(input_image, output_dir, new_name)
 
         # check existance of grayscale image
@@ -51,8 +47,7 @@ class UnitTestMain(unittest.TestCase):
         self.assertTrue(test_result)
 
         # delete cache files
-        rmtree(repo_dir + "\\main\\test\\__pycache__")
-        remove(repo_dir + "\\main\\test\\main.py")
+        rmtree(repo_dir + "\\main\\__pycache__")
 
 if __name__ == "__main__":
     unittest.main()

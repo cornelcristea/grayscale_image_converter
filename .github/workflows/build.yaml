@@ -13,8 +13,7 @@ jobs:
       - name: Test the source code
         run: |
           if [ ! -d ./target ]; then mkdir ./target; fi
-          cd ./main/test/
-          python main_test.py
+          python -m main.test.main_test
       - name: Building exe file
         run: |
           cp -r ./main/src/main.py ./target/grayscale_image_converter.py
