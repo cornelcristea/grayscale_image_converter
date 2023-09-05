@@ -23,6 +23,8 @@ class UnitTestMain(unittest.TestCase):
         elif not exists(test_dir):
             mkdir(test_dir)
         
+        print(" repo dir : " + repo_dir)
+        print(" src dir : " + src_dir)
         copyfile(src_dir + "\\main.py", repo_dir + "\\main\\test\\main.py")
 
         return repo_dir
