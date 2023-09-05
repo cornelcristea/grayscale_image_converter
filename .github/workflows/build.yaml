@@ -33,10 +33,10 @@ jobs:
           cp -r ${SRC_FILE} ${TARGET_DIR}/${PY_FILE}
           cd ${TARGET_DIR}
           pyinstaller ${PY_FILE} -y 
+          mv ./target/build/grayscale_image_converter/grayscale_image_converter ./target/build/grayscale_image_converter/grayscale_image_converter.exe
           cd ..
 
       - run: |
-          mv ./target/build/grayscale_image_converter/grayscale_image_converter ./target/build/grayscale_image_converter/grayscale_image_converter.exe
           ls ./target/build/grayscale_image_converter
 
       - name: Deploy the artifacts
