@@ -23,7 +23,3 @@ jobs:
       - name: Deploy artifacts
         run: |
           echo "Deploy artifacts: to be done"
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "Job status is ${{ job.status }}."
