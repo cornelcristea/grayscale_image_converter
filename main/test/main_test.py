@@ -30,7 +30,7 @@ class UnitTestMain(unittest.TestCase):
         # path variables
         repo_dir = UnitTestMain.setup()
         input_image = repo_dir + sep + "main" + sep + "test" + sep + "image.jpg"
-        output_dir = repo_dir + sep + "targe" + sep + "test"
+        output_dir = repo_dir + sep + "target" + sep + "test"
         new_name = "image_grayscale"
         expected_image = output_dir + sep + new_name + ".jpg"
 
@@ -40,6 +40,9 @@ class UnitTestMain(unittest.TestCase):
         spec.loader.exec_module(main)
         output_image = main.convert_image(input_image, output_dir, new_name)
 
+        # delete cache files
+        rmtree(repo_dir + sep + "main" + sep + "src" + sep + "__pycache__")
+
         # check existance of grayscale image
         if output_image == expected_image and exists(expected_image):
             test_result = True
@@ -48,10 +51,7 @@ class UnitTestMain(unittest.TestCase):
         
         # check result
         self.assertTrue(test_result)
-
-        # delete cache files
-        pycache_dir = repo_dir + sep + "main" + sep + "src" + sep + "__pycache__"
-        rmtree(pycache_dir)
+        
 
 if __name__ == "__main__":
     unittest.main()
