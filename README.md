@@ -35,6 +35,4 @@ In progress
 
 - If other user download this source code on his computer and wants to build the software, the process can de stopped with error because the user has other configuration on his computer (e.g. different OS).
 - A dev container can be created that will have a specific configuration and in this way, every user that want to build the software locally, will have same environment.
-Requirements:
-- Dev Container extension for VS Code
-- Docker
+- Requirements: Docker and Dev Container extension for VS Code
