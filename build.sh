@@ -38,14 +38,14 @@ fi
 TARGET_DIR="./target"
 TEST_FILE="./main/test/main_test.py"
 SRC_FILE="./main/src/main.py"
-REQ_FILE="./main/src/requiments.txt"
+REQ_FILE="./main/src/requirements.txt"
 PY_FILE="grayscale_image_converter.py"
 
 ###########################
 # FUNCTIONS
 ###########################
 install_req(){
-    echo "STATUS: Installing requiments..."
+    echo "STATUS: Installing requirements..."
     python -m ensurepip --upgrade
     pip install -r ${REQ_FILE}
 }
