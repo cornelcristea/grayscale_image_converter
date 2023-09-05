@@ -34,6 +34,8 @@ class UnitTestMain(unittest.TestCase):
         new_name = "image_grayscale"
         expected_image = output_dir + "\\" + new_name + ".jpg"
 
+        print("REPO DIR:" + repo_dir)
+
         # call main function
         output_image = main.convert_image(input_image, output_dir, new_name)
 
