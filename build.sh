@@ -10,7 +10,7 @@
 #   mode argument can be "debug" or "deploy"
 #
 ###########################
-# SETUP
+# ARGUMENT SETUP
 ###########################
 help(){
     echo "Usage: $0 -m <mode>"
@@ -70,7 +70,6 @@ build_exe() {
         echo "ERROR: Build failed."
     fi
 }
-
 ###########################
 # WORKFLOW
 ###########################
