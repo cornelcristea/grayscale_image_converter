@@ -40,7 +40,6 @@ TEST_FILE="./main/test/main_test.py"
 SRC_FILE="./main/src/main.py"
 REQ_FILE="./main/src/requiments.txt"
 PY_FILE="grayscale_image_converter.py"
-EXE_FILE=${TARGET_DIR}"/build/grayscale_image_converter.exe"
 
 ###########################
 # FUNCTIONS
@@ -63,9 +62,10 @@ build_exe() {
     status=$?
     if [ ${status} -eq 0 ]; then
         echo "STATUS: Build executable file..."
-        cp -r ${SRC_FILE} ${TARGET_DIR}"/"${PY_FILE}
+        cp -r ${SRC_FILE} ${TARGET_DIR}/${PY_FILE}
         cd ${TARGET_DIR}
-        pyinstaller ${PY_FILE} -y
+        pyinstaller ${PY_FILE} -y 
+        cd ..
     else
         echo "ERROR: Build failed."
     fi

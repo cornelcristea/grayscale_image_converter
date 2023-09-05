@@ -10,21 +10,35 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
+
+      - name: Setup the environment variables
+        run: |
+          export TARGET_DIR="./target"
+          export TEST_FILE="./main/test/main_test.py"
+          export SRC_FILE="./main/src/main.py"
+          export REQ_FILE="./main/src/requiments.txt"
+          export PY_FILE="grayscale_image_converter.py"
+          export ARTIFACT='./target/build/grayscale_image_converter/grayscale_image_converter.exe"
+
       - name: Install requiments
         run: |
-          pip install -r ./main/src/requiments.txt
+          pip install -r ${REQ_FILE}
 
       - name: Test the source code
         run: |
-          if [ ! -d ./target ]; then mkdir ./target; fi
-          python ./main/test/main_test.py
+          if [ ! -d ${TARGET_DIR} ]; then mkdir ${TARGET_DIR}; fi
+          python ${TEST_FILE}
 
       - name: Build the executable file
         run: |
-          pyinstaller --onefile ./main/src/main.py --name grayscale_image_converter.exe --distpath ./target/build
+          cp -r ${SRC_FILE} ${TARGET_DIR}/${PY_FILE}
+          cd ${TARGET_DIR}
+          pyinstaller ${PY_FILE} -y 
+          mv grayscale_image_converter grayscale_image_converter.exe
+          cd ..
 
       - name: Deploy the artifacts
         uses: actions/upload-artifact@v3
         with: 
           name: grayscale_image_converter
-          path: ./target/build/grayscale_image_converter/grayscale_image_converter.exe
+          path: ${ARTIFACT}
