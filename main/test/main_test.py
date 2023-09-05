@@ -2,20 +2,19 @@
 import unittest
 from os import mkdir 
 from shutil import rmtree
-from os.path import exists, abspath, dirname
-from sys import path, argv
-from ..src import main
+from os.path import exists, abspath, dirname, sep
+from sys import argv
+from importlib.util import spec_from_file_location, module_from_spec
 
 class UnitTestMain(unittest.TestCase):
     @staticmethod
     def setup():
         # prepare test enviroment
         current_dir = dirname(abspath(argv[0]))
-        pwd_list = current_dir.split("\\")
+        pwd_list = current_dir.split(sep)
         repo_dir = "\\".join(pwd_list[:-2])
         target_dir = repo_dir + "\\target"
         test_dir = target_dir + "\\test"
-        src_dir =  repo_dir + "\\main\\src" 
 
         # make target/test folder in repository
         if not exists(target_dir):
@@ -23,7 +22,8 @@ class UnitTestMain(unittest.TestCase):
             mkdir(test_dir)
         elif not exists(test_dir):
             mkdir(test_dir)
-            
+        
+        print("REPO DIR === " + repo_dir)
         return repo_dir
 
     def test_convert_image(self):
@@ -34,9 +34,10 @@ class UnitTestMain(unittest.TestCase):
         new_name = "image_grayscale"
         expected_image = output_dir + "\\" + new_name + ".jpg"
 
-        print("REPO DIR:" + repo_dir)
-
         # call main function
+        spec = spec_from_file_location("convert_image", repo_dir + "\\main\\src\\main.py")
+        main = module_from_spec(spec)
+        spec.loader.exec_module(main)
         output_image = main.convert_image(input_image, output_dir, new_name)
 
         # check existance of grayscale image
@@ -49,7 +50,8 @@ class UnitTestMain(unittest.TestCase):
         self.assertTrue(test_result)
 
         # delete cache files
-        rmtree(repo_dir + "\\main\\__pycache__")
+        pycache_dir = repo_dir + "\\main\\src\\__pycache__"
+        rmtree(pycache_dir)
 
 if __name__ == "__main__":
     unittest.main()
