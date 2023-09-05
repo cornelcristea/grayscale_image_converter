@@ -1,26 +1,22 @@
-name: Gray Scale Image Converter
-run-name: ${{ github.actor }} is testing out GitHub Actions
+name: Build
+run-name: ${{ github.actor }} is building software
 on: [push]
 jobs:
   Build-Software:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "This job is done in the following branch ${{ github.ref }}"
-      - run: source build.sh -m deploy
-      # - name: Check out repository code
-      #  uses: actions/checkout@v3
-      #- run: pip install -r ./main/src/requiments.txt
-      #- run: if [ ! -d ./target ]; then mkdir ./target; fi
-      #- run: |
-      #    cd ./main/test
-      #    python main_test.py
-      #- run: |
-      #    cp -r ./main/src/main.py ./target/grayscale_image_converter.py
-      #    cd target
-      #    pyinstaller grayscale_image_converter.py -y
-      #- name: List files in the repository
-      # run: |
-      #    ls ${{ github.workspace }}
-      #- run: echo "This job's status is ${{ job.status }}."
+      - name: Install requiments
+        run: pip install -r ./main/src/requiments.txt
+      - name: Test the source code
+        run: |
+          if [ ! -d ./target ]; then mkdir ./target; fi
+          python ./main/test/main_test.py
+      - name: Building exe file
+        run: |
+          cp -r ./main/src/main.py ./target/grayscale_image_converter.py
+          cd target
+          pyinstaller grayscale_image_converter.py -y
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "This job's status is ${{ job.status }}."
