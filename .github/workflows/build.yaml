@@ -29,4 +29,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with: 
           name: grayscale_image_converter
-          path: $HOME/target/build/grayscale_image_converter/grayscale_image_converter.exe
+          path: ${{ github.workspace }}/target/build/grayscale_image_converter/grayscale_image_converter.exe
