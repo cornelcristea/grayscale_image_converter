@@ -34,7 +34,6 @@ jobs:
           cp -r ${SRC_FILE} ${TARGET_DIR}/${PY_FILE}
           cd ${TARGET_DIR}
           pyinstaller ${PY_FILE} -y 
-          mv grayscale_image_converter grayscale_image_converter.exe
           cd ..
 
       - name: Deploy the artifacts
