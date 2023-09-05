@@ -11,14 +11,14 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
-      - name: Setup the environment variables
-        run: |
-          export TARGET_DIR="./target"
-          export TEST_FILE="./main/test/main_test.py"
-          export SRC_FILE="./main/src/main.py"
-          export REQ_FILE="./main/src/requiments.txt"
-          export PY_FILE="grayscale_image_converter.py"
-          export ARTIFACT='./target/build/grayscale_image_converter/grayscale_image_converter.exe"
+      - name: Setup environment variables
+        env:
+          TARGET_DIR: "./target"
+          TEST_FILE: "./main/test/main_test.py"
+          SRC_FILE: "./main/src/main.py"
+          REQ_FILE: "./main/src/requiments.txt"
+          PY_FILE: "grayscale_image_converter.py"
+          ARTIFACT: "./target/build/grayscale_image_converter/grayscale_image_converter.exe"
 
       - name: Install requiments
         run: |
