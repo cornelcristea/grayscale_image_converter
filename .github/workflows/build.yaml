@@ -1,5 +1,5 @@
 name: Build
-run-name: ${{ github.actor }} is building software
+run-name: ${{ github.event.head_commit.message }}
 on: [push]
 jobs:
   Build-Software:
@@ -8,7 +8,8 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Install requiments
-        run: pip install -r ./main/src/requiments.txt
+        run: |
+          pip install -r ./main/src/requiments.txt
       - name: Test the source code
         run: |
           if [ ! -d ./target ]; then mkdir ./target; fi
