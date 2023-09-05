@@ -1,6 +1,9 @@
 name: Build
 run-name: ${{ github.event.head_commit.message }}
-on: [push]
+on:
+  push:
+    branches:
+      - main
 jobs:
   Build:
     runs-on: ubuntu-latest
@@ -10,17 +13,20 @@ jobs:
       - name: Install requiments
         run: |
           pip install -r ./main/src/requiments.txt
+
       - name: Test the source code
         run: |
           if [ ! -d ./target ]; then mkdir ./target; fi
           python ./main/test/main_test.py
+
       - name: Build the executable file
         run: |
           cp -r ./main/src/main.py ./target/grayscale_image_converter.py
           cd target
           pyinstaller grayscale_image_converter.py -y
+
       - name: Deploy the artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with: 
-          name: assets-for-download
-          path: ./target/build/grayscale_image_converter/grayscale_image_converter.exe
+          name: grayscale_image_converter
+          path: $HOME/target/build/grayscale_image_converter/grayscale_image_converter.exe
