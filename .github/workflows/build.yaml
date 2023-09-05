@@ -21,10 +21,7 @@ jobs:
 
       - name: Build the executable file
         run: |
-          cp -r ./main/src/main.py ./target/grayscale_image_converter.py
-          cd target
-          pyinstaller grayscale_image_converter.py -y
-          mv grayscale_image_converter grayscale_image_converter.exe
+          pyinstaller --onefile ./main/src/main.py --name grayscale_image_converter.exe --distpath ./target/build
 
       - name: Deploy the artifacts
         uses: actions/upload-artifact@v3
