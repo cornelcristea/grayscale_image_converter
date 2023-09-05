@@ -24,7 +24,7 @@ Remark: create a docker image that will contain all necessary resources
 ## Build locally
 To build locally run the shell script in the repo main folder
 ```bash
-source bash.sh -m debug
+source build.sh -m debug
 ```
 The -m input argumnet represents the build mode and it can be:
 - debug - for test
