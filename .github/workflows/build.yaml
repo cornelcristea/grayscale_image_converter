@@ -25,8 +25,11 @@ jobs:
           cd target
           pyinstaller grayscale_image_converter.py -y
 
+      - name: Files from target folder
+      - run: ls ./target
+
       - name: Deploy the artifacts
         uses: actions/upload-artifact@v3
         with: 
           name: grayscale_image_converter
-          path: ${{ github.workspace }}/target/build/grayscale_image_converter/grayscale_image_converter.exe
+          path: ./target/build/grayscale_image_converter/grayscale_image_converter.exe
