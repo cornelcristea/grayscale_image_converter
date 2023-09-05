@@ -31,5 +31,5 @@ jobs:
       - name: Deploy the artifacts
         uses: actions/upload-artifact@v3
         with: 
-          name: grayscale_image_converter
-          path: ./target/build/grayscale_image_converter/grayscale_image_converter.exe
+          name: grayscale_image_converter.exe
+          path: ./target/build/grayscale_image_converter/grayscale_image_converter
