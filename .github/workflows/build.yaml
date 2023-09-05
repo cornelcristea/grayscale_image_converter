@@ -14,7 +14,6 @@ jobs:
       SRC_FILE: "./main/src/main.py"
       REQ_FILE: "./main/src/requiments.txt"
       PY_FILE: "grayscale_image_converter.py"
-      ARTIFACT: "./target/build/grayscale_image_converter/grayscale_image_converter.exe"
     
     steps:
       - name: Check out repository code
@@ -36,8 +35,9 @@ jobs:
           pyinstaller ${PY_FILE} -y 
           cd ..
 
+      - run: ls ./target/build/grayscale_image_converter
       - name: Deploy the artifacts
         uses: actions/upload-artifact@v3
         with: 
           name: grayscale_image_converter
-          path: ${ARTIFACT}
+          path: ./target/build/grayscale_image_converter/grayscale_image_converter.exe
