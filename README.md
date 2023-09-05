@@ -27,5 +27,5 @@ To build locally run the shell script in the repo main folder
 source build.sh -m debug
 ```
 The -m input argumnet represents the build mode and it can be:
-- debug - for test
-- deploy - for sw release
+- debug - for sw test
+- deploy - for sw build
