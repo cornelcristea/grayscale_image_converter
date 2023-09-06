@@ -38,13 +38,11 @@ Pipeline link: https://github.com/cornelcristea/grayscale_image_converter/action
 ```bash
     docker login -u DOCKER_USER -p DOCKER_PASSWORD
 ```
-If "daemon error" is present during login process, please open Docker Desktop -> Settings -> Docker Engine and be sure that "debug" parameter is present
+<i>If "daemon error" is present during login process, please open Docker Desktop -> Settings -> Docker Engine and be sure that "debug" parameter is present like in the following example:</i>
 ```bash
     "experimental": false,
     "debug": true
 ```
-Save and Restart Docker.
-
 #### Open Container:
 - Open project folder in VS Code
 - from View menu select Command Palette
