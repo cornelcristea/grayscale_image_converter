@@ -22,7 +22,7 @@ The -m input argumnet represents the build mode and it can be:
 ## CI/CD
 GitHub Action was used to perform automatic workflow for software life cycle.
 For every push on main branch, a runner will be triggered and it will perform the following steps:
-- install requiments
+- install requirements
 - test source code
 - build exe file
 - deploy exe file
@@ -31,8 +31,28 @@ Pipeline link: https://github.com/cornelcristea/grayscale_image_converter/action
 
 
 ## Docker Container
-In progress
+# Requirements: 
+- Docker Desktop
+- Dev Container extension for VS Code
 
-- If other user download this source code on his computer and wants to build the software, the process can de stopped with error because the user has other configuration on his computer (e.g. different OS).
-- A dev container can be created that will have a specific configuration and in this way, every user that want to build the software locally, will have same environment.
-- Requirements: Docker and Dev Container extension for VS Code
+# Configure
+1. First, we need to configure something in Docker app:
+Open Docker app -> Settings --> Docker Engine --> After the following line 
+```bash
+    "experimental": false
+```
+Add a new one with following instruction:
+```bash
+    "debug": true
+```
+Save and Restart Docker.
+
+2. A docker account is needed to be able to pull the image (create one on the official website)
+Execute the following commnad in terminal 
+```bash
+    docker login -u DOCKER_USER -p DOCKER_PASSWORD
+```
+* In my case, I created a shell script that will execute this command
+
+# Open
+Open folder in VS Code, from View menu select Command Palette and search the "Reopen in Container" option

@@ -13,8 +13,8 @@ class UnitTestMain(unittest.TestCase):
         current_dir = dirname(abspath(argv[0]))
         pwd_list = current_dir.split(sep)
         repo_dir = sep.join(pwd_list[:-2])
-        target_dir = repo_dir + sep + "target"
-        test_dir = target_dir + sep + "test"
+        target_dir = repo_dir + "/target"
+        test_dir = target_dir + "/test"
 
         # make target/test folder in repository
         if not exists(target_dir):
@@ -22,26 +22,25 @@ class UnitTestMain(unittest.TestCase):
             mkdir(test_dir)
         elif not exists(test_dir):
             mkdir(test_dir)
-        
-        print("REPO DIR === " + repo_dir)
+
         return repo_dir
 
     def test_convert_image(self):
         # path variables
         repo_dir = UnitTestMain.setup()
-        input_image = repo_dir + sep + "main" + sep + "test" + sep + "image.jpg"
-        output_dir = repo_dir + sep + "target" + sep + "test"
+        input_image = repo_dir + "/main/test/image.jpg"
+        output_dir = repo_dir + "/target/test"
         new_name = "image_grayscale"
-        expected_image = output_dir + sep + new_name + ".jpg"
+        expected_image = output_dir + "/" + new_name + ".jpg"
 
         # call main function
-        spec = spec_from_file_location("convert_image", repo_dir + sep + "main" + sep + "src" + sep + "main.py")
+        spec = spec_from_file_location("convert_image", repo_dir + "/main/src/main.py")
         main = module_from_spec(spec)
         spec.loader.exec_module(main)
         output_image = main.convert_image(input_image, output_dir, new_name)
 
         # delete cache files
-        rmtree(repo_dir + sep + "main" + sep + "src" + sep + "__pycache__")
+        rmtree(repo_dir + sep + "main/src/__pycache__")
 
         # check existance of grayscale image
         if output_image == expected_image and exists(expected_image):
