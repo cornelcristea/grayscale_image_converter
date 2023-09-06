@@ -39,7 +39,7 @@ After the account was created, execute the following commnad in terminal
     docker login -u DOCKER_USER -p DOCKER_PASSWORD
 ```
 * In my case, I created a shell script that will execute this command
-
+<i>
 If "daemon error" is present during login process, please follow the instructions from below:
 Open Docker app -> Settings --> Docker Engine --> After the following line 
 ```bash
@@ -50,6 +50,7 @@ Add a new one with following instruction:
     "debug": true
 ```
 Save and Restart Docker.
+</i>
 
 ## Open Container
 - Open project folder in VS Code
