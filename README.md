@@ -11,7 +11,7 @@ command: grayscale_img_converter.exe -i <image_path> -o <output_folder> -n <new_
 # Build locally
 To build locally run the shell script in the repo main folder
 ```bash
-source build.sh -m debug
+source build.sh -m deploy
 ```
 The -m input argumnet represents the build mode and it can be:
 - debug - for test process
