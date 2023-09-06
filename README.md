@@ -38,14 +38,9 @@ Pipeline link: https://github.com/cornelcristea/grayscale_image_converter/action
 ```bash
     docker login -u DOCKER_USER -p DOCKER_PASSWORD
 ```
-If "daemon error" is present during login process, please follow the instructions from below:<br>
-Open Docker app -> Settings -> Docker Engine<br>
-After the following line 
+If "daemon error" is present during login process, please open Docker Desktop -> Settings -> Docker Engine and be sure that "debug" parameter is present
 ```bash
-    "experimental": false
-```
-Add a new one with following instruction:
-```bash
+    "experimental": false,
     "debug": true
 ```
 Save and Restart Docker.
