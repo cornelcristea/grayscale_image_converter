@@ -33,7 +33,7 @@ Pipeline link: https://github.com/cornelcristea/grayscale_image_converter/action
 - Dev Container extension for VS Code
 
 ## Configure
-A docker account is needed to be able to pull the image. (https://hub.docker.com/)
+Create a docker account on https://hub.docker.com/ website to be able to build the container.
 After the account was created, execute the following commnad in terminal 
 ```bash
     docker login -u DOCKER_USER -p DOCKER_PASSWORD
