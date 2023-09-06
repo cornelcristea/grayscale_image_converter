@@ -66,7 +66,7 @@ build_exe() {
         cd ${TARGET_DIR}
         pyinstaller ${PY_FILE} -y 
         cd ..
-        cp ${TARGET_DIR}/build/grayscale_image_converter/grayscale_image_converter.exe ${TARGET_DIR}
+        mv ${TARGET_DIR}/build/grayscale_image_converter/grayscale_image_converter ${TARGET_DIR}/grayscale_image_converter.exe
     else
         echo "ERROR: Build failed."
     fi
