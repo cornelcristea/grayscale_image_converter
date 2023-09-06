@@ -40,7 +40,7 @@ class UnitTestMain(unittest.TestCase):
         output_image = main.convert_image(input_image, output_dir, new_name)
 
         # delete cache files
-        rmtree(repo_dir + sep + "main/src/__pycache__")
+        rmtree(repo_dir + "/main/src/__pycache__")
 
         # check existance of grayscale image
         if output_image == expected_image and exists(expected_image):
