@@ -13,9 +13,6 @@ To build locally run the shell script in the repo main folder
 ```bash
 source build.sh -m deploy
 ```
-The -m input argumnet represents the build mode and it can be:
-- debug - for test process
-- deploy - for build process
 
 ## CI/CD
 GitHub Action was used to perform automatic workflow for software life cycle.
