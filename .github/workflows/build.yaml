@@ -21,26 +21,26 @@ jobs:
 
       - name: Install requiments
         run: |
-          pip install -r ${REQ_FILE}
+          pip install -r $REQ_FILE
 
       - name: Test the source code
         run: |
-          if [ ! -d ${TARGET_DIR} ]; then mkdir ${TARGET_DIR}; fi
-          python ${TEST_FILE}
+          if [ ! -d $TARGET_DIR ]; then mkdir $TARGET_DIR; fi
+          python $TEST_FILE
 
       - name: Build the executable file
         run: |
-          cp -r ${SRC_FILE} ${TARGET_DIR}/${PY_FILE}
-          cd ${TARGET_DIR}
-          pyinstaller ${PY_FILE} -y 
+          cp -r $SRC_FILE $TARGET_DIR/$PY_FILE
+          cd $TARGET_DIR
+          pyinstaller $PY_FILE -y 
           cd ..
 
       - name: Prepare the artifacts
         run: |
-          mv ${TARGET_DIR}/build/grayscale_image_converter/grayscale_image_converter ${TARGET_DIR}/grayscale_image_converter.exe
+          mv $TARGET_DIR/build/grayscale_image_converter/grayscale_image_converter $TARGET_DIR/grayscale_image_converter.exe
 
       - name: Deploy the artifacts
         uses: actions/upload-artifact@v3
         with: 
           name: grayscale_image_converter
-          path: ${TARGET_DIR}/grayscale_image_converter.exe
+          path: ./target/grayscale_image_converter.exe
