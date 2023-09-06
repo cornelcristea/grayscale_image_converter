@@ -32,14 +32,15 @@ Requirements:
 - Docker Desktop
 - Dev Container extension for VS Code
 
-Configure
+Configure:
 - Create a docker account on https://hub.docker.com/ website to be able to build the container.
 - After the account was created, execute the following commnad in terminal 
 ```bash
     docker login -u DOCKER_USER -p DOCKER_PASSWORD
 ```
- - If "daemon error" is present during login process, please follow the instructions from below:
-Open Docker app -> Settings --> Docker Engine --> After the following line 
+If "daemon error" is present during login process, please follow the instructions from below:<br>
+Open Docker app -> Settings -> Docker Engine<br>
+After the following line 
 ```bash
     "experimental": false
 ```
@@ -47,9 +48,9 @@ Add a new one with following instruction:
 ```bash
     "debug": true
 ```
-- Save and Restart Docker.
+Save and Restart Docker.
 
-Open Container
+Open Container:
 - Open project folder in VS Code
 - from View menu select Command Palette
 - search and select "Reopen in Container" option
