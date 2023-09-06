@@ -8,8 +8,8 @@ Develop a software that will convert a .jpg image to grayscale. As input argumen
 
 command: grayscale_img_converter.exe -i <image_path> -o <output_folder> -n <new_name>
 
-## Build locally
-To build locally run the shell script in the repo main folder
+## Build
+To build the software locally, execute the following command in the root folder of this project:
 ```bash
 source build.sh -m deploy
 ```
