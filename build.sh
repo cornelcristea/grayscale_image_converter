@@ -46,7 +46,7 @@ PY_FILE="grayscale_image_converter.py"
 ###########################
 install_req(){
     echo "STATUS: Installing requirements..."
-    python -m ensurepip --upgrade
+    # python -m ensurepip --upgrade
     pip install -r ${REQ_FILE}
 }
 
@@ -66,6 +66,7 @@ build_exe() {
         cd ${TARGET_DIR}
         pyinstaller ${PY_FILE} -y 
         cd ..
+        cp ${TARGET_DIR}/build/grayscale_image_converter/grayscale_image_converter.exe ${TARGET_DIR}
     else
         echo "ERROR: Build failed."
     fi
