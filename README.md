@@ -31,9 +31,9 @@ Pipeline link: https://github.com/cornelcristea/grayscale_image_converter/action
 
 #### Configure:
 - Create a docker account on https://hub.docker.com/ website to be able to build the container.
-- After the account was created, execute the following commnad in terminal 
+- After the account was created, execute the following commnad in terminal (replace DOCKER_USER and DOCKER_PASS with your credentials)
 ```bash
-    docker login -u DOCKER_USER -p DOCKER_PASSWORD
+    docker login -u DOCKER_USER -p DOCKER_PASS
 ```
 <i>If "daemon error" is present during login process, please open Docker Desktop -> Settings -> Docker Engine and be sure that "debug" parameter is present like in the following example:</i>
 ```bash
