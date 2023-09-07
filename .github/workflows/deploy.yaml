@@ -1,7 +1,9 @@
 name: Deploy
-run-name: ${{ github.event_name }} deploy the software
+run-name: Deploy the software
 on:
   workflow_dispatch:
+    branches:
+      - main
 
 jobs:
   Build:
