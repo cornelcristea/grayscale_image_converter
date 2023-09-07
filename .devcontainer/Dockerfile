@@ -17,7 +17,7 @@ RUN apt-get clean
 # point "python3" to "python"
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
-# add a a new user
+# add a a new user "guest"
 RUN useradd -ms /bin/bash guest
 ENV PATH="/home/guest/.local/bin:$PATH"
 USER guest

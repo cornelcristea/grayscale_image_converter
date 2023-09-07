@@ -2,5 +2,16 @@
 	"name": "NoName",
 	"build": {
 		"dockerfile": "Dockerfile"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"formulahendry.code-runner",
+				"mhutchie.git-graph"
+			]
+		}
 	}
 }
+
