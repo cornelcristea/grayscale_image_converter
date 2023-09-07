@@ -7,14 +7,14 @@
 #   source build.sh -m <mode>
 #
 # note: 
-#   mode argument can be "debug" or "deploy"
+#   mode argument can be "test" or "deploy"
 #
 ###########################
 # ARGUMENT SETUP
 ###########################
 help(){
     echo "Usage: $0 -m <mode>"
-    echo -e "\t-m : mode can be *debug* or *deploy*"
+    echo -e "\t-m : mode can be *test* or *deploy*"
     exit 1
 }
 
@@ -66,7 +66,7 @@ build_exe() {
         cd ${TARGET_DIR}
         pyinstaller ${PY_FILE} -y 
         cd ..
-        mv ${TARGET_DIR}/build/grayscale_image_converter/grayscale_image_converter ${TARGET_DIR}/grayscale_image_converter.exe
+        rm ${TARGET_DIR}/${PY_FILE}
     else
         echo "ERROR: Build failed."
     fi
@@ -75,7 +75,7 @@ build_exe() {
 # WORKFLOW
 ###########################
 case ${MODE} in
-    "debug")
+    "test")
         install_req
         sw_test ;;
     "deploy")

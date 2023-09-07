@@ -34,3 +34,4 @@ jobs:
           cd $TARGET_DIR
           pyinstaller $PY_FILE -y 
           cd ..
+          rm $TARGET_DIR/$PY_FILE
