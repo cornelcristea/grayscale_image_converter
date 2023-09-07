@@ -1,7 +1,13 @@
 # grayscale_image_converter
 
+## Table of Content:
+- [Description](#description)
+- [Build](#build)
+- [CI/CD](#cicd)
+- [Docker Container](#docker-container)
+
 ## Description:
-Develop a software that will convert a .jpg image to grayscale. As input arguments, the software will have the following arguments:
+A software that will convert a .jpg image to grayscale having the following arguments as inputs:
 - -i <image_path> - full path of your image
 - -o <output_folder> - folder where you want to save the new image
 - -n <new_name> - name of your new image
