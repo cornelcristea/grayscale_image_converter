@@ -1,9 +1,8 @@
-name: Build
-run-name: ${{ github.event.head_commit.message }}
+name: Deploy
+run-name: ${{ github.user }} deploy the software
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+
 jobs:
   Build:
     runs-on: ubuntu-20.04

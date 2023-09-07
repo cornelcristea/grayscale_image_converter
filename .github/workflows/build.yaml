@@ -1,0 +1,36 @@
+name: Build
+run-name: ${{ github.event.head_commit.message }}
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Build:
+    runs-on: ubuntu-20.04
+
+    env:
+      TARGET_DIR: "./target"
+      TEST_FILE: "./main/test/main_test.py"
+      SRC_FILE: "./main/src/main.py"
+      REQ_FILE: "./main/src/requirements.txt"
+      PY_FILE: "grayscale_image_converter.py"
+    
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Install requiments
+        run: |
+          pip install -r $REQ_FILE
+
+      - name: Test the source code
+        run: |
+          if [ ! -d $TARGET_DIR ]; then mkdir $TARGET_DIR; fi
+          python $TEST_FILE
+
+      - name: Build the executable file
+        run: |
+          cp -r $SRC_FILE $TARGET_DIR/$PY_FILE
+          cd $TARGET_DIR
+          pyinstaller $PY_FILE -y 
+          cd ..
