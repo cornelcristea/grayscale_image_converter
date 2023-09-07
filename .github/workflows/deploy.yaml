@@ -2,8 +2,6 @@ name: Deploy
 run-name: Deploy the software
 on:
   workflow_dispatch:
-    branches:
-      - main
 
 jobs:
   Build:
