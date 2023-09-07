@@ -13,7 +13,6 @@ To build the software locally, execute the following command in the root folder 
 ```bash
 source build.sh -m deploy
 ```
-<i>Remark: If you are a Windows user, then you should follow instruction from Docker Container section.</i>
 
 ## CI/CD
 GitHub Action was used to perform automatic workflow for software life cycle.

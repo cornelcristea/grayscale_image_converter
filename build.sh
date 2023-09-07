@@ -52,13 +52,13 @@ install_req(){
 
 sw_test(){
     echo "STATUS: Test source file..."
-    if [ ! -d ${TARGET_DIR} ]; then
-        mkdir ${TARGET_DIR};
-    fi
     python ${TEST_FILE}
 }
 
 build_exe() {
+    if [ ! -d ${TARGET_DIR} ]; then
+        mkdir ${TARGET_DIR};
+    fi
     status=$?
     if [ ${status} -eq 0 ]; then
         echo "STATUS: Build executable file..."
@@ -67,6 +67,7 @@ build_exe() {
         pyinstaller ${PY_FILE} -y 
         cd ..
         rm ${TARGET_DIR}/${PY_FILE}
+        cp ${TARGET_DIR}/build/grayscale_image_converter/grayscale_image_converter ${TARGET_DIR}/grayscale_image_converter.exe
     else
         echo "ERROR: Build failed."
     fi

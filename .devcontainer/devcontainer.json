@@ -9,7 +9,8 @@
 				"ms-python.python",
 				"ms-python.vscode-pylance",
 				"formulahendry.code-runner",
-				"mhutchie.git-graph"
+				"mhutchie.git-graph",
+				"ms-azuretools.vscode-docker"
 			]
 		}
 	}
