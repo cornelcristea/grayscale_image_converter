@@ -14,7 +14,7 @@ RUN apt-get install -y libglib2.0-0
 # clean cache 
 RUN apt-get clean
 
-# point "python3" to "python"
+# point "python" to "python3" command
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
 # add a a new user "guest"
