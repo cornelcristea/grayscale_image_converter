@@ -26,7 +26,7 @@ class UnitTestMain(unittest.TestCase):
         
         return repo_dir
 
-    def test_convert_image(self):
+    def test_1_convert_image(self):
         # path variables
         repo_dir = UnitTestMain.setup()
         input_image = repo_dir + sep + "main" + sep + "test" + sep + "image.jpg"
