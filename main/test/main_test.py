@@ -2,7 +2,7 @@
 import unittest
 from os import mkdir
 from shutil import rmtree
-from os.path import exists, abspath, dirname, sep
+from os.path import exists, abspath, dirname, sep, realpath
 from sys import argv
 from importlib.util import spec_from_file_location, module_from_spec
 
@@ -10,7 +10,7 @@ class UnitTestMain(unittest.TestCase):
     @staticmethod
     def setup():
         # prepare test enviroment
-        current_dir = dirname(abspath(argv[0]))
+        current_dir = dirname(realpath(__file__))
         pwd_list = current_dir.split(sep)
         repo_dir = sep.join(pwd_list[:-2])
         target_dir = repo_dir + sep + "target"
@@ -41,7 +41,11 @@ class UnitTestMain(unittest.TestCase):
         output_image = main.convert_image(input_image, output_dir, new_name)
 
         # delete cache files
-        rmtree(repo_dir + sep + "main" + sep + "src" + sep + "__pycache__")
+        try:
+            rmtree(repo_dir + sep + "main" + sep + "src" + sep + "__pycache__")
+            rmtree(repo_dir + sep + "main" + sep + "test" + sep + "__pycache__")
+        except:
+            print("'__pycache__ folder cannot be deleted.")
 
         # check existance of grayscale image
         if output_image == expected_image and exists(expected_image):
