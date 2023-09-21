@@ -11,8 +11,9 @@ A software that will convert a .jpg image to grayscale having the following argu
 - -i <image_path> - full path of your image
 - -o <output_folder> - folder where you want to save the new image
 - -n <new_name> - name of your new image
-
-command: grayscale_img_converter.exe -i <image_path> -o <output_folder> -n <new_name>
+```bash
+grayscale_img_converter.exe -i <image_path> -o <output_folder> -n <new_name>
+```
 
 ## Build
 To build the software locally, execute the following command in the root folder of this project:
