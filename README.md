@@ -21,14 +21,17 @@ source build.sh -m deploy
 ```
 
 ## CI/CD
-GitHub Action was used to perform automatic workflow for software life cycle.
-For every push on main branch, a runner will be triggered and it will perform the following steps:
+GitHub Action was used to perform automatic workflow for software life cycle:
 - install requirements
 - test source code
 - build exe file
 - deploy exe file
 
-Pipeline link: https://github.com/cornelcristea/grayscale_image_converter/actions
+Two runner are configured for the following jobs:
+- <b>Build</b>: for every push on main branch, a Build runner for will be triggered and it will perform the steps until "build exe file".
+- <b>Deploy</b>: all steps mentioned before will be performed in order to generate the artifact.
+
+Pipelines link: https://github.com/cornelcristea/grayscale_image_converter/actions
 
 ## Docker Container
 #### Requirements: 
