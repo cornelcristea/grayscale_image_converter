@@ -28,7 +28,7 @@ GitHub Action was used to perform automatic workflow for software life cycle:
 - deploy exe file
 
 Two Runners are configured in order to perform the following jobs:
-- <b>Build</b>: for every push on main branch, a Build runner for will be triggered and it will perform the steps until "build exe file".
+- <b>Build</b>: for every push on main branch, it will perform the steps mentioned before whitout "deploy exe file"
 - <b>Deploy</b>: all steps mentioned before will be performed in order to generate the artifact.
 
 Pipelines link: https://github.com/cornelcristea/grayscale_image_converter/actions
