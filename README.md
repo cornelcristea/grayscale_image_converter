@@ -27,7 +27,7 @@ GitHub Action was used to perform automatic workflow for software life cycle:
 - build exe file
 - deploy exe file
 
-Two runner are configured for the following jobs:
+Two Runners are configured in order to perform the following jobs:
 - <b>Build</b>: for every push on main branch, a Build runner for will be triggered and it will perform the steps until "build exe file".
 - <b>Deploy</b>: all steps mentioned before will be performed in order to generate the artifact.
 
