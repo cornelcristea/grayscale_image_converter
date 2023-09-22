@@ -45,7 +45,7 @@ class UnitTestMain(unittest.TestCase):
             rmtree(repo_dir + sep + "main" + sep + "src" + sep + "__pycache__")
             rmtree(repo_dir + sep + "main" + sep + "test" + sep + "__pycache__")
         except:
-            print("'__pycache__ folder cannot be deleted.")
+            print("Warning: __pycache__ folder cannot be deleted.")
 
         # check existance of grayscale image
         if output_image == expected_image and exists(expected_image):
