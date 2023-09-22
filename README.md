@@ -15,8 +15,8 @@ grayscale_img_converter.exe -i <image_path> -o <output_folder> -n <new_name>
 ```
 
 # Requirements:
-- Visual Studio Code
-- Python 3.11 or higher
+- [Visual Studio Code](https://code.visualstudio.com/download)
+- [Python 3.8](https://www.python.org/downloads) or higher
 
 # Build
 To build the software locally, execute the following command in the root folder of this project:
