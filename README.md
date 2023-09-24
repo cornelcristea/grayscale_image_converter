@@ -1,9 +1,9 @@
 # Table of Content:
-1. [Description](#description)
-2. [Requirements](#requirements)
-3. [Build](#build)
-4. [CI/CD](#cicd)
-5. [Docker Container](#docker-container)
+- [Description](#description)
+- [Requirements](#requirements)
+- [Build](#build)
+- [CI/CD](#cicd)
+- [Docker Container](#docker-container)
 
 # Description:
 A software that will convert a .jpg image to grayscale having the following arguments as inputs:
