@@ -36,8 +36,8 @@ Pipelines link: https://github.com/cornelcristea/grayscale_image_converter/actio
 
 ## Docker Container
 #### Requirements: 
-- Docker Desktop
-- Dev Container extension for VS Code
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [Dev Container extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
 #### Configure:
 - Create a docker account on https://hub.docker.com/ website to be able to build the container.
