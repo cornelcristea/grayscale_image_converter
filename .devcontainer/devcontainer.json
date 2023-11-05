@@ -1,5 +1,5 @@
 {
-	"name": "NoName",
+	"name": "DevContainer",
 	"build": {
 		"dockerfile": "Dockerfile"
 	},
