@@ -12,12 +12,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/cornelcristea/grayscale_image_converter']]])
-            }
-        }
-        
         stage('Install requirements') {
             steps {
                 sh "pip install -r $REQ_FILE"
