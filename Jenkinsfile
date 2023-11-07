@@ -12,7 +12,7 @@ pipeline {
     }
 
     stages {
-        stage('Install requirements') {
+        stage('Install dependencies') {
             steps {
                 sh "pip install -r $REQ_FILE"
             }
