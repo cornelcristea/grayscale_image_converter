@@ -33,16 +33,16 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - run: |
-        if [ ! -d $TARGET_DIR ]; then mkdir $TARGET_DIR; fi
-        python $TEST_FILE
+          if [ ! -d $TARGET_DIR ]; then mkdir $TARGET_DIR; fi
+          python $TEST_FILE
 
   Generate executable:
     name: Generate executable
     runs-on: ubuntu-20.04
     steps:
       - run: |
-        cp -r $SRC_FILE $TARGET_DIR/$PY_FILE
-        cd $TARGET_DIR
-        pyinstaller $PY_FILE -y 
-        cd ..
-        rm $TARGET_DIR/$PY_FILE
+          cp -r $SRC_FILE $TARGET_DIR/$PY_FILE
+          cd $TARGET_DIR
+          pyinstaller $PY_FILE -y 
+          cd ..
+          rm $TARGET_DIR/$PY_FILE
