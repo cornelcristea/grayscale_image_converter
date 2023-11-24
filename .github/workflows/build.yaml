@@ -12,7 +12,7 @@ jobs:
   Build:
     runs-on: ubuntu-20.04
 
-    variables:
+    env:
       TARGET_DIR: "./target"
       TEST_FILE: "./main/test/main_test.py"
       SRC_FILE: "./main/src/main.py"
