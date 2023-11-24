@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  Checkout:
+  Checkout_code:
     runs-on: ubuntu-20.04
 
     env:
@@ -23,20 +23,20 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
-  Install requirements:
+  Install_requirements:
     runs-on: ubuntu-20.04 
       #- name: Install requirements 
         - run: |
           pip install -r $REQ_FILE
 
-  Test the source code:
+  Test_code:
       runs-on: ubuntu-20.04
       #- name: Test the source code
         - run: |
           if [ ! -d $TARGET_DIR ]; then mkdir $TARGET_DIR; fi
           python $TEST_FILE
 
-  Build the executable file:
+  Build_exe:
       #- name: Build the executable file
         - run: |
           cp -r $SRC_FILE $TARGET_DIR/$PY_FILE
