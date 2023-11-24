@@ -26,9 +26,8 @@ jobs:
     needs: Checkout
     steps:
       - run: |
-          echo $GITHUB_WORKSPACE
           pwd
-          ls -R
+          ls
           pip install -r $REQ_FILE
 
   Test:
