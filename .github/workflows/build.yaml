@@ -39,10 +39,10 @@ jobs:
   Generate executable:
     name: Generate executable
     runs-on: ubuntu-20.04
-      steps:
-        - run: |
-          cp -r $SRC_FILE $TARGET_DIR/$PY_FILE
-          cd $TARGET_DIR
-          pyinstaller $PY_FILE -y 
-          cd ..
-          rm $TARGET_DIR/$PY_FILE
+    steps:
+      - run: |
+        cp -r $SRC_FILE $TARGET_DIR/$PY_FILE
+        cd $TARGET_DIR
+        pyinstaller $PY_FILE -y 
+        cd ..
+        rm $TARGET_DIR/$PY_FILE
