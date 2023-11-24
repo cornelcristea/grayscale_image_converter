@@ -26,8 +26,10 @@ jobs:
     needs: Checkout
     steps:
       - run: |
-          cd $GITHUB_WORKSPACE
-          pip install -r ${REQ_FILE}
+          echo $GITHUB_WORKSPACE
+          pwd
+          ls -R
+          pip install -r $REQ_FILE
 
   Test:
     runs-on: ubuntu-20.04
