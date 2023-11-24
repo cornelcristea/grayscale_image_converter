@@ -20,8 +20,6 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - name: Display repository content
-        run: ls -R
 
   Build:
     runs-on: ubuntu-20.04
@@ -29,6 +27,7 @@ jobs:
     steps:
       - run: |
           pwd
+          ls -R
           pip install -r $REQ_FILE
 
   Test:
