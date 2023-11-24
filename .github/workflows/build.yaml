@@ -25,12 +25,14 @@ jobs:
   Install_Requirements:
     name: Install_Requirements
     runs-on: ubuntu-20.04 
+    needs: Checkout_Code
     steps:
       - run: pip install -r $REQ_FILE
 
   Unit_Testing:
     name: Unit_Testing
     runs-on: ubuntu-20.04
+    needs: Install_Requirements
     steps:
       - run: |
           if [ ! -d $TARGET_DIR ]; then mkdir $TARGET_DIR; fi
@@ -39,6 +41,7 @@ jobs:
   Generate_Executable:
     name: Generate_Executable
     runs-on: ubuntu-20.04
+    needs: Unit_Testing
     steps:
       - run: |
           cp -r $SRC_FILE $TARGET_DIR/$PY_FILE
