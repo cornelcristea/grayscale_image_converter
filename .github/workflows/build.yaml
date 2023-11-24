@@ -8,40 +8,41 @@ on:
       branches:
       - main
 
+env:
+  TARGET_DIR: "./target"
+  TEST_FILE: "./main/test/main_test.py"
+  SRC_FILE: "./main/src/main.py"
+  REQ_FILE: "./main/src/requirements.txt"
+  PY_FILE: "grayscale_image_converter.py"
+
 jobs:
   Checkout:
+    name: Check out repository code
     runs-on: ubuntu-20.04
-
-    env:
-      TARGET_DIR: "./target"
-      TEST_FILE: "./main/test/main_test.py"
-      SRC_FILE: "./main/src/main.py"
-      REQ_FILE: "./main/src/requirements.txt"
-      PY_FILE: "grayscale_image_converter.py"
-    
     steps:
-      #- name: Check out repository code
       - uses: actions/checkout@v3
 
   Install requirements:
+    name: Install requirements
     runs-on: ubuntu-20.04 
-      #- name: Install requirements 
-      - run: |
-        pip install -r $REQ_FILE
+    steps:
+      - run: pip install -r $REQ_FILE
 
   Unit Testing:
+    name: Unit Testing
     runs-on: ubuntu-20.04
-      #- name: Test the source code
+    steps:
       - run: |
         if [ ! -d $TARGET_DIR ]; then mkdir $TARGET_DIR; fi
         python $TEST_FILE
 
   Generate executable:
+    name: Generate executable
     runs-on: ubuntu-20.04
-      #- name: Build the executable file
-      - run: |
-        cp -r $SRC_FILE $TARGET_DIR/$PY_FILE
-        cd $TARGET_DIR
-        pyinstaller $PY_FILE -y 
-        cd ..
-        rm $TARGET_DIR/$PY_FILE
+      steps:
+        - run: |
+          cp -r $SRC_FILE $TARGET_DIR/$PY_FILE
+          cd $TARGET_DIR
+          pyinstaller $PY_FILE -y 
+          cd ..
+          rm $TARGET_DIR/$PY_FILE
