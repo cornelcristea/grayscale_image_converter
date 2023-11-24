@@ -1,5 +1,5 @@
 name: Build
-#run-name: ${{ github.event.head_commit.message }}
+run-name: ${{ github.event.head_commit.message }}
 on:
   push:
     branches:
@@ -15,42 +15,37 @@ env:
   REQ_FILE: "./main/src/requirements.txt"
   PY_FILE: "grayscale_image_converter.py"
 
-stages:
-  - name: Checkout
-    jobs:
-      - name: Checkout the repository code
-        runs-on: ubuntu-20.04
-        steps:
-          - uses: actions/checkout@v3
-          - name: Display repository content
-            run: ls -R
+jobs:
+  Checkout:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Display repository content
+        run: ls -R
 
-  - name: Build
-    jobs:
-      - name: Install requirements for build
-        runs-on: ubuntu-20.04
-        steps:
-          - run: |
-              pwd
-              pip install -r $REQ_FILE
+  Build:
+    runs-on: ubuntu-20.04
+    needs: Checkout
+    steps:
+      - run: |
+          pwd
+          pip install -r $REQ_FILE
 
-  - name: Test
-    jobs:
-      - name: Run all unitary tests
-        runs-on: ubuntu-20.04
-        steps:
-          - run: |
-              if [ ! -d $TARGET_DIR ]; then mkdir $TARGET_DIR; fi
-              python $TEST_FILE
+  Test:
+    runs-on: ubuntu-20.04
+    needs: Build
+    steps:
+      - run: |
+          if [ ! -d $TARGET_DIR ]; then mkdir $TARGET_DIR; fi
+          python $TEST_FILE
 
-  - name: Deploy
-    jobs:
-    - name: Generate the executable file
-      runs-on: ubuntu-20.04
-      steps:
-        - run: |
-            cp -r $SRC_FILE $TARGET_DIR/$PY_FILE
-            cd $TARGET_DIR
-            pyinstaller $PY_FILE -y 
-            cd ..
-            rm $TARGET_DIR/$PY_FILE
+  Deploy:
+    runs-on: ubuntu-20.04
+    needs: Test
+    steps:
+      - run: |
+          cp -r $SRC_FILE $TARGET_DIR/$PY_FILE
+          cd $TARGET_DIR
+          pyinstaller $PY_FILE -y 
+          cd ..
+          rm $TARGET_DIR/$PY_FILE
