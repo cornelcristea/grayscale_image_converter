@@ -30,7 +30,9 @@ jobs:
     needs: Checkout
     steps:
       - name: Install requirements for build
-        run: pip install -r $REQ_FILE
+        run: |
+          echo pwd
+          pip install -r $REQ_FILE
 
   Test:
     name: Test
