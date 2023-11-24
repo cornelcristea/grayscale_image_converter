@@ -26,21 +26,19 @@ jobs:
   Install requirements:
     runs-on: ubuntu-20.04 
       #- name: Install requirements 
-        run: |
+        - run: |
           pip install -r $REQ_FILE
 
-
-    Test the source code:
+  Test the source code:
       runs-on: ubuntu-20.04
       #- name: Test the source code
-        run: |
+        - run: |
           if [ ! -d $TARGET_DIR ]; then mkdir $TARGET_DIR; fi
           python $TEST_FILE
 
-
-    Build the executable file:
+  Build the executable file:
       #- name: Build the executable file
-        run: |
+        - run: |
           cp -r $SRC_FILE $TARGET_DIR/$PY_FILE
           cd $TARGET_DIR
           pyinstaller $PY_FILE -y 
