@@ -31,7 +31,7 @@ jobs:
     steps:
       - name: Install requirements for build
         run: |
-          echo pwd
+          pwd
           pip install -r $REQ_FILE
 
   Test:
