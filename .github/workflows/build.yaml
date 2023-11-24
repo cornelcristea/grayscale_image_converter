@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  Checkout_code:
+  Checkout:
     runs-on: ubuntu-20.04
 
     env:
@@ -20,27 +20,28 @@ jobs:
       PY_FILE: "grayscale_image_converter.py"
     
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
+      #- name: Check out repository code
+      - uses: actions/checkout@v3
 
-  Install_requirements:
+  Install requirements:
     runs-on: ubuntu-20.04 
       #- name: Install requirements 
-        - run: |
-          pip install -r $REQ_FILE
+      - run: |
+        pip install -r $REQ_FILE
 
-  Test_code:
-      runs-on: ubuntu-20.04
+  Unit Testing:
+    runs-on: ubuntu-20.04
       #- name: Test the source code
-        - run: |
-          if [ ! -d $TARGET_DIR ]; then mkdir $TARGET_DIR; fi
-          python $TEST_FILE
+      - run: |
+        if [ ! -d $TARGET_DIR ]; then mkdir $TARGET_DIR; fi
+        python $TEST_FILE
 
-  Build_exe:
+  Generate executable:
+    runs-on: ubuntu-20.04
       #- name: Build the executable file
-        - run: |
-          cp -r $SRC_FILE $TARGET_DIR/$PY_FILE
-          cd $TARGET_DIR
-          pyinstaller $PY_FILE -y 
-          cd ..
-          rm $TARGET_DIR/$PY_FILE
+      - run: |
+        cp -r $SRC_FILE $TARGET_DIR/$PY_FILE
+        cd $TARGET_DIR
+        pyinstaller $PY_FILE -y 
+        cd ..
+        rm $TARGET_DIR/$PY_FILE
