@@ -1,5 +1,5 @@
 name: Build
-run-name: ${{ github.event.head_commit.message }}
+#run-name: ${{ github.event.head_commit.message }}
 on:
   push:
     branches:
@@ -28,6 +28,7 @@ stages:
   - name: Build
     jobs:
       - name: Install requirements for build
+        runs-on: ubuntu-20.04
         steps:
           - run: |
               pwd
@@ -36,6 +37,7 @@ stages:
   - name: Test
     jobs:
       - name: Run all unitary tests
+        runs-on: ubuntu-20.04
         steps:
           - run: |
               if [ ! -d $TARGET_DIR ]; then mkdir $TARGET_DIR; fi
@@ -44,6 +46,7 @@ stages:
   - name: Deploy
     jobs:
     - name: Generate the executable file
+      runs-on: ubuntu-20.04
       steps:
         - run: |
             cp -r $SRC_FILE $TARGET_DIR/$PY_FILE
