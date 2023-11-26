@@ -5,7 +5,7 @@ on:
     branches:
       - main
   pull_request:
-      branches:
+    branches:
       - main
 
 env:
@@ -16,33 +16,23 @@ env:
   PY_FILE: "grayscale_image_converter.py"
 
 jobs:
-  Checkout:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v3
-   
   Build:
     runs-on: ubuntu-20.04
-    needs: Checkout
     steps:
-      - run: |
-          pwd
-          ls
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Install requirements
+        run: |
           pip install -r $REQ_FILE
 
-  Test:
-    runs-on: ubuntu-20.04
-    needs: Build
-    steps:
-      - run: |
+      - name: Unit Test
+        run: |
           if [ ! -d $TARGET_DIR ]; then mkdir $TARGET_DIR; fi
           python $TEST_FILE
 
-  Deploy:
-    runs-on: ubuntu-20.04
-    needs: Test
-    steps:
-      - run: |
+      - name: Build
+        run: |
           cp -r $SRC_FILE $TARGET_DIR/$PY_FILE
           cd $TARGET_DIR
           pyinstaller $PY_FILE -y 

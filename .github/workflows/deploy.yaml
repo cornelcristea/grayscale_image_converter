@@ -3,17 +3,16 @@ run-name: Deploy the software
 on:
   workflow_dispatch:
 
-jobs:
-  deploy:
-    runs-on: ubuntu-20.04
+env:
+  TARGET_DIR: "./target"
+  TEST_FILE: "./main/test/main_test.py"
+  SRC_FILE: "./main/src/main.py"
+  REQ_FILE: "./main/src/requirements.txt"
+  PY_FILE: "grayscale_image_converter.py"
 
-    env:
-      TARGET_DIR: "./target"
-      TEST_FILE: "./main/test/main_test.py"
-      SRC_FILE: "./main/src/main.py"
-      REQ_FILE: "./main/src/requirements.txt"
-      PY_FILE: "grayscale_image_converter.py"
-    
+jobs:
+  Deploy:
+    runs-on: ubuntu-20.04
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -22,12 +21,12 @@ jobs:
         run: |
           pip install -r $REQ_FILE
 
-      - name: Test the source code
+      - name: Unit Test
         run: |
           if [ ! -d $TARGET_DIR ]; then mkdir $TARGET_DIR; fi
           python $TEST_FILE
 
-      - name: Build the executable file
+      - name: Build
         run: |
           cp -r $SRC_FILE $TARGET_DIR/$PY_FILE
           cd $TARGET_DIR
@@ -35,11 +34,11 @@ jobs:
           cd ..
           rm $TARGET_DIR/$PY_FILE
 
-      - name: Prepare the artifacts
+      - name: Prepare artifacts
         run: |
           cp $TARGET_DIR/build/grayscale_image_converter/grayscale_image_converter $TARGET_DIR/grayscale_image_converter.exe
 
-      - name: Deploy the artifacts
+      - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with: 
           name: grayscale_image_converter
