@@ -34,12 +34,9 @@ jobs:
           cd ..
           rm $TARGET_DIR/$PY_FILE
 
-      - name: Prepare artifacts
-        run: |
-          cp $TARGET_DIR/build/grayscale_image_converter/grayscale_image_converter $TARGET_DIR/grayscale_image_converter.exe
-
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
+        run: cp $TARGET_DIR/build/grayscale_image_converter/grayscale_image_converter $TARGET_DIR/grayscale_image_converter.exe
         with: 
           name: grayscale_image_converter
           path: ./target/grayscale_image_converter.exe
